@@ -1,12 +1,19 @@
 import React from "react";
+import products from "../products";
 
-const ProductDetails = (props) => {
-  console.log(props.detail);
-  
+const ProductDetails = ({ match }) => {
+  const product = products.find((p) => p._id === match.params.id);
   return (
     <div>
-      {/* {props.detail.category} */}
-    
+      <p>{product.name}</p>
+      <p> {product.description}</p>
+      <p>Brand::{product.brand}</p>
+      <p>Category::{product.category}</p>
+      <p>Review and rating::{product.rating}</p>
+
+      <p>
+        <small>Price :: ${product.price}</small>
+      </p>
     </div>
   );
 };
