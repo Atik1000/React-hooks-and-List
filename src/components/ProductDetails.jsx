@@ -1,21 +1,25 @@
-import React from "react";
-import products from "../products";
+import React,{useState,useEffect} from 'react';
+import Loading from './Loading';
 
-const ProductDetails = ({ match }) => {
-  const product = products.find((p) => p._id === match.params.id);
-  return (
-    <div>
-      <p>{product.name}</p>
-      <p> {product.description}</p>
-      <p>Brand::{product.brand}</p>
-      <p>Category::{product.category}</p>
-      <p>Review and rating::{product.rating}</p>
 
-      <p>
-        <small>Price :: ${product.price}</small>
-      </p>
-    </div>
-  );
-};
+const ProductDetail = (props) => {
+    const [loading, setLoading] = useState()
 
-export default ProductDetails;
+      useEffect(() => {
+          setLoading(false)
+      })
+    return (
+        <>
+            {
+                loading && <Loading />
+            }
+            name: {props.detail.name}  <br />
+            description: {props.detail.description} <br />
+            price: {props.detail.price} <br />
+            category: {props.detail.category}
+        </>
+    )
+}
+
+
+export default ProductDetail;

@@ -1,16 +1,24 @@
-import React from "react";
-import './Product.css'
+import React from 'react';
 
-const Products = ({ product }) => {
-  return (
-    <div className='product'>
-      <a href={`/product/${product._id}`}>
-        <p>{product.name}</p>
-      </a>
+const Product = (props) => {
 
-      <p>{product.price}</p>
-    </div>
-  );
-};
+    return (
+        <>
+            {
+                props.products.map((product, index) => {
+                    return <div onClick={()=>props.function(product)} key={index}>
+                            <div  className="product">
+                                Name: {product.name} <br />
+                                Price: {product.price}
+                            </div>
+                         </div>
+                })
+            }
 
-export default Products;
+
+        </>
+    )
+}
+
+
+export default Product;
